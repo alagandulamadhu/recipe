@@ -1,14 +1,23 @@
 package nl.abnamro.intake.assesement.recipe.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import java.util.Date;
 import java.util.List;
 
+@ApiModel("RecipeResponseModel information")
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class RecipeResponseModel {
+
+    @ApiModelProperty(value = "Recipe REST API response status")
     private Integer status;
+
+    @ApiModelProperty(value = "Recipe REST API response data")
     private List<Recipe> data;
+
+    @ApiModelProperty(value = "Recipe REST API response time")
     private Date timestamp;
 
     public RecipeResponseModel(Integer status, List<Recipe> data, Date timestamp) {

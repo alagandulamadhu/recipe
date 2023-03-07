@@ -1,12 +1,18 @@
 package nl.abnamro.intake.assesement.recipe.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import io.swagger.annotations.ApiModelProperty;
 
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class Ingredient {
 
+    @ApiModelProperty(value = "A unique Id to identity ingredient in API. Auto generated value")
     private Integer ingredientId;
+
+    @ApiModelProperty(value = "Name of Ingredient")
     private String name;
+
+    @ApiModelProperty(value = "An attribute which drives update operation either delete or update the ingredient")
     private String action;
 
     public String getName() {
@@ -33,11 +39,4 @@ public class Ingredient {
         this.action = action;
     }
 
-    @Override
-    public String toString() {
-        return "Ingredient{" +
-                "ingredientId=" + ingredientId +
-                ", name='" + name + '\'' +
-                '}';
-    }
 }
