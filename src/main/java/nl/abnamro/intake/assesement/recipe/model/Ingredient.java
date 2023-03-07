@@ -3,6 +3,8 @@ package nl.abnamro.intake.assesement.recipe.model;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import io.swagger.annotations.ApiModelProperty;
 
+import javax.validation.constraints.NotBlank;
+
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
 public class Ingredient {
 
@@ -10,6 +12,7 @@ public class Ingredient {
     private Integer ingredientId;
 
     @ApiModelProperty(value = "Name of Ingredient")
+    @NotBlank(message = "Ingredient Name is mandatory")
     private String name;
 
     @ApiModelProperty(value = "An attribute which drives update operation either delete or update the ingredient")

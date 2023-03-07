@@ -19,6 +19,7 @@ import java.util.Objects;
 @Service
 public class RecipeServiceImpl implements RecipeService {
 
+    public static final String RECIPE_DTO_ALREADY_EXISTS = "RecipeDto Already exists : ";
     @Autowired
     private RecipeRepository recipeRepository;
 
@@ -26,7 +27,7 @@ public class RecipeServiceImpl implements RecipeService {
     public RecipeDto saveRecipe(RecipeRequestModel recipeRequestModel) {
         List<RecipeDto> recipeDtos = recipeRepository.findRecipeByName(recipeRequestModel.getName());
         if (Objects.nonNull(recipeDtos) && recipeDtos.size() > 0) {
-            throw new RecipeConstraintException("RecipeDto Already exists : " + recipeRequestModel.getName());
+            throw new RecipeConstraintException(RECIPE_DTO_ALREADY_EXISTS + recipeRequestModel.getName());
         }
         return recipeRepository.save(RecipeUtil.buildRecipe(recipeRequestModel));
     }
@@ -42,7 +43,7 @@ public class RecipeServiceImpl implements RecipeService {
         if (Objects.nonNull(recipeRequestModel.getName())) {
             List<RecipeDto> recipeDtos = recipeRepository.findRecipeByName(recipeRequestModel.getName());
             if (!CollectionUtils.isEmpty(recipeDtos) && !recipeDtos.get(0).getId().equals(recipeDto.getId())) {
-                throw new RecipeConstraintException("RecipeDto Already exists : " + recipeRequestModel.getName());
+                throw new RecipeConstraintException(RECIPE_DTO_ALREADY_EXISTS + recipeRequestModel.getName());
             }
         }
         RecipeUtil.updateRecipe(recipeRequestModel, recipeDto);

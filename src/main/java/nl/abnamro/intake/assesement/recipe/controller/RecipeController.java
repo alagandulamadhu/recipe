@@ -18,6 +18,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.Date;
 import java.util.List;
 
@@ -33,7 +34,7 @@ public class RecipeController {
     @ExecutionTime
     @ApiOperation(value = "Create Recipe REST API")
     @PostMapping(value = "/v1/recipes", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<RecipeResponseModel> createRecipe(@RequestBody RecipeRequestModel recipeRequestModel) {
+    public ResponseEntity<RecipeResponseModel> createRecipe(@Valid @RequestBody RecipeRequestModel recipeRequestModel) {
         RecipeResponseModel recipeResponseModel = RecipeUtil.buildRecipeResponseModel(recipeService.saveRecipe(recipeRequestModel));
         recipeResponseModel.setStatus(HttpStatus.CREATED.value());
         return new ResponseEntity<>(recipeResponseModel, HttpStatus.CREATED);
