@@ -9,8 +9,8 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>nl.abnamro.intake.assesement</groupId>
-    <artifactId>recipeDto</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <artifactId>recipe</artifactId>
+    <version>1.o</version>
     <name>recipeDto</name>
     <description>This is REST API project for recipeDtos</description>
     <properties>
