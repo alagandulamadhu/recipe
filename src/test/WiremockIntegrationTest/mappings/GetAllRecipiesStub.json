@@ -1,0 +1,12 @@
+{
+  "request": {
+    "url": "/api/recipes",
+    "method": "GET"
+  },
+  
+  "response": {
+    "status": 200,
+	"body":
+	"{\"data\": [       {         \"name\": \"Chicken Biryani\",         \"recipeId\": 1,         \"description\": \"Delicious recipe\",         \"dishType\": \"Non Veg\",         \"instruction\": \"Cooking with stove\",         \"ingredients\": [           {             \"ingredientId\": 1,             \"name\": \"Chicken\"           }         ]       }     ],  \"timestamp\": \"2023-03-07T09:57:00.109+00:00\"}"
+  }
+}

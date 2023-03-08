@@ -1,0 +1,12 @@
+{
+  "request": {
+    "url": "/api/recipes/1",
+    "method": "GET"
+  },
+  
+  "response": {
+    "status": 404,
+	"body":
+	"{        \"message\": \"Recipe Not Found : 1\",     \"detail\": \"uri=/api/recipes/1\",     \"timestamp\": \"2023-03-07T11:20:13.218+00:00\" }"
+  }
+}
