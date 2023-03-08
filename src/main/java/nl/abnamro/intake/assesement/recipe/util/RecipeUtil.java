@@ -78,12 +78,17 @@ public class RecipeUtil {
     }
 
     private static Recipe buildRecipe(RecipeDto recipeDto) {
-        Recipe recipe = new Recipe();
+        Recipe recipe = getRecipe();
         BeanUtils.copyProperties(recipeDto, recipe);
         recipe.setRecipeId(recipeDto.getId());
         if (!CollectionUtils.isEmpty(recipeDto.getRecipeIngredients())) {
             recipe.setIngredients(recipeDto.getRecipeIngredients().stream().map(RecipeUtil::buildIngredient).collect(Collectors.toList()));
         }
+        return recipe;
+    }
+
+    public static Recipe getRecipe() {
+        Recipe recipe = new Recipe();
         return recipe;
     }
 
