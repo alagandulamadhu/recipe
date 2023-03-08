@@ -39,7 +39,7 @@ public class RecipeServiceImpl implements RecipeService {
 
     @Override
     public RecipeDto updateRecipe(RecipeRequestModel recipeRequestModel, Integer recipeId) {
-        RecipeDto recipeDto = recipeRepository.getOne(recipeId);
+        RecipeDto recipeDto = findRecipe(recipeId);
         if (Objects.nonNull(recipeRequestModel.getName())) {
             List<RecipeDto> recipeDtos = recipeRepository.findRecipeByName(recipeRequestModel.getName());
             if (!CollectionUtils.isEmpty(recipeDtos) && !recipeDtos.get(0).getId().equals(recipeDto.getId())) {
