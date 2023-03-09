@@ -39,6 +39,7 @@ class RecipeControllerTest {
 
     @Mock
     Recipe reciepe;
+
     @BeforeEach
     void setUp() {
         MockitoAnnotations.initMocks(this);
@@ -50,7 +51,7 @@ class RecipeControllerTest {
 
     @Test
     void createRecipe() {
-        RecipeRequestModel recipeRequestModel =Mockito.spy(RecipeRequestModel.class);
+        RecipeRequestModel recipeRequestModel = Mockito.spy(RecipeRequestModel.class);
         recipeRequestModel.setDescription("Chicken 65 ");
         recipeRequestModel.setName("Chicken");
         recipeRequestModel.setDishType("Non-Veg");
@@ -58,41 +59,36 @@ class RecipeControllerTest {
         recipeRequestModel.setInstruction("Instructions");
 
         ArrayList<Ingredient> ingredients = Mockito.mock(ArrayList.class);
-        Ingredient ingredient= Mockito.mock(Ingredient.class);
+        Ingredient ingredient = Mockito.mock(Ingredient.class);
         ingredient.setIngredientId(1);
         ingredient.setName("Chicken");
         ingredient.setAction("some action");
         ingredients.add(ingredient);
         recipeRequestModel.setIngredients(ingredients);
 
-        RecipeDto recipeDto =Mockito.spy(RecipeDto.class);
+        RecipeDto recipeDto = Mockito.spy(RecipeDto.class);
         recipeDto.setName("Chicken");
 
         Mockito.when(recipeService.saveRecipe(recipeRequestModel)).thenReturn(recipeDto);
 
-        ResponseEntity<RecipeResponseModel>  response= recipeControllerTest.createRecipe(recipeRequestModel);
-
-        RecipeResponseModel responseModel= response.getBody();
-        Integer ststusCode =responseModel.getStatus();
-        assertEquals(ststusCode, 201);
-        List<Recipe> recipes = responseModel.getData();
-        Recipe recipe =recipes.get(0);
-        assertEquals("Chicken",recipe.getName());
+        ResponseEntity<RecipeResponseModel> response = recipeControllerTest.createRecipe(recipeRequestModel);
+        assertEquals(response.getStatusCode(), CREATED);
+        assertEquals(response.getBody().getData().get(0).getName(), recipeRequestModel.getName());
     }
 
     @Test
     void deleteRecipe() {
-        RecipeDto recipeDto =Mockito.spy(RecipeDto.class);
+        RecipeDto recipeDto = Mockito.spy(RecipeDto.class);
         recipeDto.setName("Chicken");
         recipeDto.setId(1);
         Mockito.when(recipeService.findRecipe(1)).thenReturn(recipeDto);
-        recipeControllerTest.deleteRecipe(1);
-        assertEquals(200, 200);
+        ResponseEntity<RecipeResponseModel> response = recipeControllerTest.deleteRecipe(1);
+        assertEquals(response.getStatusCode(), HttpStatus.OK);
     }
 
     @Test
     void updateRecipe() {
-        RecipeRequestModel recipeRequestModel =Mockito.spy(RecipeRequestModel.class);
+        RecipeRequestModel recipeRequestModel = Mockito.spy(RecipeRequestModel.class);
         recipeRequestModel.setDescription("Chicken 65 ");
         recipeRequestModel.setName("Chicken");
         recipeRequestModel.setDishType("Non-Veg");
@@ -100,33 +96,31 @@ class RecipeControllerTest {
         recipeRequestModel.setInstruction("Instructions");
 
         ArrayList<Ingredient> ingredients = Mockito.mock(ArrayList.class);
-        Ingredient ingredient= Mockito.mock(Ingredient.class);
+        Ingredient ingredient = Mockito.mock(Ingredient.class);
         ingredient.setIngredientId(1);
         ingredient.setName("Chicken");
         ingredient.setAction("some action");
         ingredients.add(ingredient);
         recipeRequestModel.setIngredients(ingredients);
 
-        RecipeDto recipeDto =Mockito.spy(RecipeDto.class);
+        RecipeDto recipeDto = Mockito.spy(RecipeDto.class);
         recipeDto.setName("Chicken");
         recipeDto.setId(1);
-        Mockito.when(recipeService.updateRecipe(recipeRequestModel,1)).thenReturn(recipeDto);
-
-        recipeControllerTest.updateRecipe(1,recipeRequestModel);
-
-        assertEquals(200, 200);
+        Mockito.when(recipeService.updateRecipe(recipeRequestModel, 1)).thenReturn(recipeDto);
+        ResponseEntity<RecipeResponseModel> response = recipeControllerTest.updateRecipe(1, recipeRequestModel);
+        assertEquals(response.getStatusCode(), HttpStatus.OK);
     }
 
     @Test
     void getRecipe() {
-        RecipeDto recipeDto =Mockito.spy(RecipeDto.class);
+        RecipeDto recipeDto = Mockito.spy(RecipeDto.class);
         recipeDto.setName("Chicken");
         recipeDto.setId(1);
         Mockito.when(recipeService.findRecipe(1)).thenReturn(recipeDto);
-        recipeControllerTest.getRecipe(1);
-        assertEquals(200, 200);
+        ResponseEntity<RecipeResponseModel> response = recipeControllerTest.getRecipe(1);
+        assertEquals(response.getStatusCode(), HttpStatus.OK);
+        assertEquals(response.getBody().getData().get(0).getRecipeId(), recipeDto.getId());
     }
-
 
 
 }
