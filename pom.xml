@@ -10,8 +10,8 @@
     </parent>
     <groupId>nl.abnamro.intake.assesement</groupId>
     <artifactId>recipe</artifactId>
-    <version>1.o</version>
-    <name>recipeDto</name>
+    <version>1.0</version>
+    <name>recipe</name>
     <description>This is REST API project for recipeDtos</description>
     <properties>
         <java.version>11</java.version>

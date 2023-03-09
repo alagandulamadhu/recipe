@@ -39,7 +39,7 @@ This application is packaged as a jar which has Tomcat 9 embedded. No Tomcat or 
 * You can build the project and run the tests by running mvn clean package
 * Once successfully built, you can run the service by one of these two methods:
 
-      java -jar  target/recipe.jar
+      java -jar target\recipe-1.0.jar
                 or
       mvn spring-boot:run
 * Check the stdout or recipe.log file to make sure no exceptions are thrown
@@ -49,7 +49,7 @@ This application is packaged as a jar which has Tomcat 9 embedded. No Tomcat or 
 ## Steps to Integration tests 
 * We used Wire mock in standalone mode 
 * 1.Start the Wire mock server by navigating this path 
-* {working directory}/recipe\src\test\WiremockIntegrationTest Run the below command -
+* {working directory}\recipe\src\test\WiremockIntegrationTest Run the below command -
               
       java -jar wiremock-jre8-standalone-2.35.0.jar --port {port number}
 
