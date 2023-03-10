@@ -34,6 +34,7 @@
 * Swagger2 - 2.4.0
 * Wiremock - 2.35.0 (Integration Test)
 * Mockito
+* Jacoco - code coverage
 
 ## How to Run Application
 
@@ -72,11 +73,15 @@ it using the java -jar command.
 
 * It will start the server on default port number 8080 (skipped port i command) ,if fails specify port number
 * Once the Server is up.You can hit endpoint API's on registered port number .
-* 
+
+## Code Coverage:
+
+![img_2.png](img_2.png)
 
 ## Swagger Documentation:
 
 * Below are the endpoints implemented
 
 ![img.png](img.png)
+
 
