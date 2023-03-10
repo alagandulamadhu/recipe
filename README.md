@@ -9,7 +9,7 @@
 
 * Note: Detail design please refer Technical document attached in docs directory
 
-### Below key principles I have followed my Rest full API
+### Below key principles I have followed for the implementation of Recipe Rest full API
 
 1. Followed Layered ,Loose coupled design approach – Clear Separation for responsibility.
 2. Designing meaningful end points with usage of proper HTTP methods .
