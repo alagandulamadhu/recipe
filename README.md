@@ -1,10 +1,13 @@
 # Recipe REST API
 
+* Recipe service to manage recipes
+
 ## Technical Design:
 
+### Flow Diagram: 
 ![img_1.png](img_1.png)
 
-* Note: Detail design please refer Technical document attached in the Path
+* Note: Detail design please refer Technical document attached in docs directory
 
 ### Below key principles I have followed my Rest full API
 
