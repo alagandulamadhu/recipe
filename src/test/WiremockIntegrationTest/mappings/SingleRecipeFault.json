@@ -1,6 +1,6 @@
 {
   "request": {
-    "url": "/api/recipes/1",
+    "url": "/api/v1/recipes/1",
     "method": "GET"
   },
   

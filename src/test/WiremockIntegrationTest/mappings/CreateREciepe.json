@@ -1,7 +1,7 @@
 {
  "request":
  {
- "url": "/api/recipes",
+ "url": "/api/v1/recipes",
  "method": "POST",
  "bodyPatterns" : [ {
         "equalToJson" : "{\r\n  \"description\": \"Poha\",\r\n  \"dishType\": \"Breakfast\",\r\n  \"ingredients\": [\r\n    {\r\n      \"action\": \"Cook\",\r\n      \"ingredientId\": 12,\r\n      \"name\": \"poha\"\r\n    }\r\n  ],\r\n  \"instruction\": \"not soak for long\",\r\n  \"name\": \"its a name\",\r\n  \"serves\": 1\r\n}"
