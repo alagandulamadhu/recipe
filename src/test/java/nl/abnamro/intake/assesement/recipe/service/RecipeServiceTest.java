@@ -68,7 +68,6 @@ public class RecipeServiceTest {
         recipeDto.setName("Chicken");
         recipeDto.setId(1);
         Mockito.when(recipeRepository.findById(recipeDto.getId())).thenReturn(Optional.ofNullable(null));
-        //Mockito.doNothing().when(recipeRepository).delete(recipeDto);
         recipeService.deleteRecipe(recipeDto.getId());
     }
 
@@ -111,7 +110,6 @@ public class RecipeServiceTest {
         recipeDtoList.add(recipeDto);
         Mockito.when(recipeRepository.findById(recipeId)).thenReturn(Optional.of(new RecipeDto()));
         Mockito.when(recipeRepository.findRecipeByName(recipeRequestModel.getName())).thenReturn(recipeDtoList);
-        //Mockito.when(recipeRepository.save(ArgumentMatchers.any(RecipeDto.class))).thenReturn(updateRecipe);
         RecipeDto updatedRecipe = recipeService.updateRecipe(recipeRequestModel, recipeId);
         Assertions.assertEquals(updatedRecipe.getId(), updatedRecipe.getId());
     }
@@ -132,8 +130,6 @@ public class RecipeServiceTest {
         updateRecipe.setServes(recipeRequestModel.getServes());
         recipeDtoList.add(recipeDto);
         Mockito.when(recipeRepository.findById(recipeId)).thenReturn(Optional.ofNullable(null));
-       /* Mockito.when(recipeRepository.findRecipeByName(recipeRequestModel.getName())).thenReturn(recipeDtoList);
-        Mockito.when(recipeRepository.save(ArgumentMatchers.any(RecipeDto.class))).thenReturn(updateRecipe);*/
         RecipeDto updatedRecipe = recipeService.updateRecipe(recipeRequestModel, recipeId);
         Assertions.assertEquals(updatedRecipe.getId(), updatedRecipe.getId());
     }
